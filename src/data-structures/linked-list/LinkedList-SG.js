@@ -102,4 +102,27 @@ export default class SinglyLinkedList {
     }
     return false;
   }
+
+  insert(val, index) {
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+    if (index === 0) {
+      this.unshift(val);
+      return true;
+    }
+
+    const newNode = new Node(val);
+    const prevNode = this.get(index - 1);
+    const nextNode = this.get(index);
+
+    newNode.next = nextNode;
+    prevNode.next = newNode;
+    this.length += 1;
+    return true;
+  }
 }
