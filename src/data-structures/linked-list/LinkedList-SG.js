@@ -1,6 +1,6 @@
 import Node from './LinkedListNode-SG';
 
-class SinglyLinkedList {
+export default class SinglyLinkedList {
   constructor() {
     this.length = 0;
     this.head = null;
@@ -21,9 +21,7 @@ class SinglyLinkedList {
     return this;
   }
 
-  pop(val) {
-    const newNode = new Node(val);
-
+  pop() {
     if (!this.head) {
       return undefined;
     }
@@ -44,7 +42,7 @@ class SinglyLinkedList {
 
     this.tail = newTail;
     this.tail.next = null;
-    this.length--;
+    this.length += 1;
     if (this.length === 0) {
       this.head = null;
       this.tail = null;
@@ -57,10 +55,10 @@ class SinglyLinkedList {
       return undefined;
     }
 
-    let currentHead = this.head;
+    const currentHead = this.head;
 
     this.head = currentHead.next;
-    this.length--;
+    this.length -= 1;
 
     return currentHead;
   }
@@ -75,7 +73,7 @@ class SinglyLinkedList {
       newNode.next = this.head;
       this.head = newNode;
     }
-    this.count++;
+    this.count += 1;
     return this;
   }
 }
