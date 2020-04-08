@@ -76,4 +76,30 @@ export default class SinglyLinkedList {
     this.count += 1;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+
+    let current = this.head;
+    let count = 0;
+
+    while (count !== index) {
+      current = current.next;
+      count += 1;
+    }
+
+    return current;
+  }
+
+  set(val, index) {
+    const nodeToChange = this.get(index);
+
+    if (nodeToChange) {
+      nodeToChange.val = val;
+      return true;
+    }
+    return false;
+  }
 }
